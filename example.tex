@@ -3,11 +3,9 @@
 
 \documentclass[bwprint]{cumcmthesis} 
 
-<<<<<<< HEAD
-\title{代谢综合征的检测、影响因素以及预测模型}
-=======
+
 \title{代谢综合征的检查、影响因素以及预测模型}
->>>>>>> refs/remotes/MrGodfrey/master
+
 \tihao{A}
 \baominghao{54321}
 \schoolname{XX大学}
@@ -126,13 +124,50 @@ logistic回归模型的参数的估计通常采用的是最大似然估计法，
 
 我们对预先给的数据的计算结果如下：
 
-\paragraph{回归参数的估计}
+\paragraph{回归参数的检验}
 获得logistic回归模型的参数估计后，需要对你和的logistic回归模型进行检验。
 \subparagraph{对模型回归系数整体的检验}
 \subparagraph{对模型中回归系数进行检验}
 各因素的回归系数估计及检验结果如下：
 
 表中第2列为回归系数的最大似然估计值，第3列为估计值的标准误差，第4列为Wald检验的统计量值，第5列为Wald$ \chi^{2} $检验的P值，第6列为标准化回归系数的最大似然估计值，第7列为OR估计值，第8、9列为优势比OR的95\% 可信区间的上、下限。
+
+\paragraph{模型参数的流行病学意义}
+参数$ \beta_{0} $的意义：当各相关因素不存在作用时，发病与不发病的概率之比的自然对数，它反映了疾病的本底状态。
+
+参数$ \beta_{j} $的意义：设自变量$ X_{j} $的两个取值为$ x_{j}=e_{j} $和$ X_{j}=e_{0} $，假定其他变量的取值保持不变，由流行病学的知识可知
+\[ \ln OR_{j}=\ln[\dfrac{P_{1}/(1-P_{1})}{P_{0}/(1-p_{0})}]=\beta_{j}(e_{1}-e_{0}) \]\\
+取对数后可得
+\begin{equation}
+OR_{j}=\exp [\beta_{j}(e_{1}-e_{0})]
+\end{equation}
+
+$ OR_{j} $称为调整优势比，表示扣除了其他自变量影响后，自变量$ X_{j} $的作用。如果$ x_{j} $仅取二值
+\[ X_{j}=\begin{cases}
+1 & \text{暴露}\\
+0 & \text{非暴露}
+\end{cases} \]
+则暴露组与非暴露组出现阳性结果的优势比为
+\begin{equation}
+OR_{j}=\exp\beta_{j} 
+\end{equation}
+由指数函数的性质可得。当$ \beta_{j}=o $时，$ OR_{j}=1 $,说明自变量$ X_{j} $对是否出现阳性结果不存在影响；当$ \beta\neq0 $时，$ OR_{j}\neq1 $，说明$ X_{j} $可能是危险因子或是保护因子。
+
+优势比$ OR $的区间估计计算公式为
+\begin{equation}
+b_{j}\pm U_{\alpha /2}SE(b_{j}) 
+\end{equation}
+其中$ SE(B_{j}) $为回归系数$ b_{j} $渐进标准误。$ U_{\alpha /2} $为标准正态分布的界值。$ OR $的$ 100(1-\alpha)\% $可信区间为
+\begin{equation}
+\exp(b_{j}\pm U_{\alpha /2}SE(b_{j})) 
+\end{equation}
+
+回归系数绝对值的大小可反映自变量对模型的贡献大小，当各自变量的单位不同时，可比较标准化的回归系数$ \beta_{j} $的估计值$ b_{j}^{'} $的绝对值，$ b_{j}^{'} $计算公式为：
+\begin{equation}
+b_{j}^{'}=b_{j}S_{j}/(\pi/\sqrt{3})=0.5513b_{j}S_{j}
+\end{equation}
+其中$ S_{j} $为自变量$ X_{j} $标准差。
+
 
 问题三流程图：
 \begin{figure}[!h]
